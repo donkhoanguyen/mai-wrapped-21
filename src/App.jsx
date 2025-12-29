@@ -1,0 +1,37 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Components
+import LoginPage from './components/LoginPage';
+import ArchetypePage from './components/ArchetypePage';
+
+function App() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [userData, setUserData] = useState({ name: '' });
+
+  const handleLogin = (name) => {
+    setUserData({ ...userData, name });
+    setCurrentStep(2);
+  };
+
+  return (
+    <div className="relative w-full h-screen overflow-hidden bg-slate-50 text-slate-800 font-sans">
+      <AnimatePresence mode="wait">
+        {currentStep === 1 && (
+          <LoginPage key="login" onLogin={handleLogin} />
+        )}
+        {currentStep === 2 && (
+          <ArchetypePage key="archetype" />
+        )}
+      </AnimatePresence>
+      
+      {/* Bottom Status - "System Syncing..." */}
+      <div className="absolute bottom-4 right-4 text-xs text-slate-400 font-mono opacity-60 pointer-events-none">
+        System Syncing...
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
