@@ -440,8 +440,8 @@ const TruthDetectorPage = ({ onNext }) => {
               >
                 <p className={`text-xl md:text-2xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] italic ${isPocoyoHappy ? 'text-blue-200' : 'text-red-400'}`}>
                   {isPocoyoHappy 
-                    ? "Lúc nào anh cũng yêu em" 
-                    : "Error detected: Lúc nào anh cũng yêu em"}
+                    ? "Exactly! Lúc nào anh cũng yêu em" 
+                    : "Error detected: Đâu lúc nào anh không yêu em ????"}
                 </p>
                 
                 {isPocoyoHappy && (
