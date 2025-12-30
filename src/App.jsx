@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Components
 import LoginPage from './components/LoginPage';
 import ArchetypePage from './components/ArchetypePage';
+import TruthDetectorPage from './components/TruthDetectorPage';
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -21,7 +22,10 @@ function App() {
           <LoginPage key="login" onLogin={handleLogin} />
         )}
         {currentStep === 2 && (
-          <ArchetypePage key="archetype" />
+          <ArchetypePage key="archetype" onNext={() => setCurrentStep(3)} />
+        )}
+        {currentStep === 3 && (
+          <TruthDetectorPage key="truth" onNext={() => setCurrentStep(4)} />
         )}
       </AnimatePresence>
       

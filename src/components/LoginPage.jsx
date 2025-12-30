@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import winterBackground from '../../visual_asset/winter_background.png';
 
 const SnowParticle = ({ delay, duration, xStart, size, type }) => (
   <motion.div
@@ -50,10 +51,13 @@ const LoginPage = ({ onLogin }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden bg-[#ff9a9e] bg-gradient-to-br from-[#fad0c4] via-[#ffd1ff] to-[#a18cd1]"
+      className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Bright Gradient Background Layer */}
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 via-pink-200 to-pink-400 opacity-80 animate-gradient-xy"></div>
+      {/* Winter Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${winterBackground})` }}
+      ></div>
       
       {/* Particles Layer */}
       {particles.map((p) => (
@@ -79,7 +83,7 @@ const LoginPage = ({ onLogin }) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <h1 className="text-3xl md:text-5xl text-slate-900 font-sans font-medium tracking-tight text-center">
+        <h1 className="text-4xl md:text-6xl text-white font-serif font-bold tracking-wide text-center drop-shadow-2xl" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, textShadow: '0 4px 20px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)' }}>
           Happy 21 to em Mai
         </h1>
 
@@ -87,7 +91,8 @@ const LoginPage = ({ onLogin }) => {
           onClick={handleStart}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 bg-white rounded-full shadow-sm text-slate-900 text-sm font-medium hover:shadow-md transition-all tracking-wide"
+          className="px-8 py-3 bg-white rounded-full shadow-sm text-slate-900 text-sm font-bold hover:shadow-md transition-all tracking-wide"
+          style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Let's begin
         </motion.button>
