@@ -6,6 +6,7 @@ import LoginPage from './components/LoginPage';
 import OpeningThoughtsPage from './components/OpeningThoughtsPage';
 import ArchetypePage from './components/ArchetypePage';
 import TruthDetectorPage from './components/TruthDetectorPage';
+import AllMyWishesPage from './components/AllMyWishesPage';
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -30,6 +31,9 @@ function App() {
         )}
         {currentStep === 4 && (
           <TruthDetectorPage key="truth" onNext={() => setCurrentStep(5)} />
+        )}
+        {currentStep === 5 && (
+          <AllMyWishesPage key="wishes" onNext={() => setCurrentStep(6)} />
         )}
       </AnimatePresence>
       
