@@ -37,21 +37,23 @@ const AllMyWishesPage = ({ onNext }) => {
   const [wishIndex, setWishIndex] = useState(0);
 
   const wishesPool = [
-    "mãi luôn xinh đẹp",
-    "rạng rỡ mỗi ngày",
-    "được ăn ngon nhìu",
+    "có mọi điều em muốn",
+    "cười thật là nhìu",
+    "ăn thật là nhiều món ngong",
+    "tự hào về bản thân",
+    "không làm việc quá sức",
+    "luôn vui vẻ mỗi ngày",
+    "gặp nhiều điều may mắn",
+    "được yêu thương thật nhiều",
+    "ngủ ngon mỗi tối",
+    "luôn mạnh mẽ vượt qua thử thách",
+    "luôn tự do làm điều mình thích",
+    "mọi dự định đều suôn sẻ",
+    "có những người bạn tuyệt vời",
+    "thành công sự nghiệp",
+    "giữ gìn sức khoẻ",
     "hạnh phúc bên anh",
-    "học tập thật tốt",
-    "không bị stress nhen",
-    "du lịch muôn nơi",
-    "ngủ ngon mỗi đêm",
-    "cười thật nhìu nha",
-    "vạn sự may mắn",
-    "luôn là chính mình",
-    "mãi yêu anh nhé",
-    "luôn bình an",
-    "sức khỏe dồi dào",
-    "thành công rực rỡ"
+    "yêu anh"
   ];
 
   const handleContainerClick = (e) => {

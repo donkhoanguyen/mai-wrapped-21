@@ -7,6 +7,7 @@ import OpeningThoughtsPage from './components/OpeningThoughtsPage';
 import ArchetypePage from './components/ArchetypePage';
 import TruthDetectorPage from './components/TruthDetectorPage';
 import AllMyWishesPage from './components/AllMyWishesPage';
+import FinalChapterPage from './components/FinalChapterPage';
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -34,6 +35,9 @@ function App() {
         )}
         {currentStep === 5 && (
           <AllMyWishesPage key="wishes" onNext={() => setCurrentStep(6)} />
+        )}
+        {currentStep === 6 && (
+          <FinalChapterPage key="final" />
         )}
       </AnimatePresence>
       
