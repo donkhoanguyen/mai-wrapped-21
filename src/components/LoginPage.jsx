@@ -33,7 +33,7 @@ const LoginPage = ({ onLogin }) => {
     setIsUnlocked(true);
     setTimeout(() => {
       onLogin("Mai"); 
-    }, 2000);
+    }, 2800); // Wait for the snow accumulation to finish
   };
 
   // Sparkles and magic dust
@@ -64,16 +64,54 @@ const LoginPage = ({ onLogin }) => {
         <SnowParticle key={p.id} {...p} />
       ))}
 
-      {/* Spring Bloom Transition */}
+      {/* Falling Rough Snow Chunks Transition */}
       <AnimatePresence>
         {isUnlocked && (
-          <motion.div
-            className="absolute z-50 rounded-full bg-white"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 30, opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            style={{ width: '100px', height: '100px' }}
-          />
+          <div className="absolute inset-0 z-50 pointer-events-none overflow-hidden">
+            {/* Background fill that appears as chunks fall to ensure full coverage */}
+            <motion.div
+              className="absolute inset-0 bg-[#f8fafc]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+            />
+
+            {[...Array(120)].map((_, i) => {
+              const size = 60 + Math.random() * 150;
+              const xStart = Math.random() * 110 - 5; // Slight overflow
+              const delay = Math.random() * 1.8;
+              const duration = 1.2 + Math.random() * 1.2;
+              
+              // Create rough, non-perfectly round shapes
+              const borderRadius = `${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% / ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}%`;
+
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute bg-[#f8fafc] shadow-[inset_-5px_-5px_15px_rgba(203,213,225,0.4)]"
+                  style={{
+                    width: size,
+                    height: size,
+                    left: `${xStart}%`,
+                    top: -size,
+                    borderRadius: borderRadius,
+                    filter: "blur(1px)",
+                  }}
+                  initial={{ y: "-10vh", rotate: 0, scale: 0.8 }}
+                  animate={{ 
+                    y: "115vh",
+                    rotate: Math.random() * 360,
+                    scale: 1
+                  }}
+                  transition={{ 
+                    duration: duration, 
+                    delay: delay,
+                    ease: "easeIn" 
+                  }}
+                />
+              );
+            })}
+          </div>
         )}
       </AnimatePresence>
 

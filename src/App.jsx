@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import LoginPage from './components/LoginPage';
+import OpeningThoughtsPage from './components/OpeningThoughtsPage';
 import ArchetypePage from './components/ArchetypePage';
 import TruthDetectorPage from './components/TruthDetectorPage';
 
@@ -22,10 +23,13 @@ function App() {
           <LoginPage key="login" onLogin={handleLogin} />
         )}
         {currentStep === 2 && (
-          <ArchetypePage key="archetype" onNext={() => setCurrentStep(3)} />
+          <OpeningThoughtsPage key="thoughts" onNext={() => setCurrentStep(3)} />
         )}
         {currentStep === 3 && (
-          <TruthDetectorPage key="truth" onNext={() => setCurrentStep(4)} />
+          <ArchetypePage key="archetype" onNext={() => setCurrentStep(4)} />
+        )}
+        {currentStep === 4 && (
+          <TruthDetectorPage key="truth" onNext={() => setCurrentStep(5)} />
         )}
       </AnimatePresence>
       
