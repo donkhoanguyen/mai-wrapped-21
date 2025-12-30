@@ -1,46 +1,44 @@
+# Age 21: A Personal Letter — "To Mai" Edition 💌
 
-# Age 21: Wrapped — "Us" Edition 🥂
-
-> **Always together, through every season.**
+> **A heartfelt journey through seasons, memories, and love.**
 
 ---
 
 ## 🌲 Thematic & Tech Choices
 - **Stack**: React + Tailwind CSS + Framer Motion
-- **Aesthetic**: Pastel gradients, Glassmorphism, cozy sticker energy, premium "Wrapped" layouts
-- **Seasonal Arc**: Winter ‘24 → Winter ‘25 (backgrounds, transitions, and content shift by season)
+- **Aesthetic**: Pastel gradients, Glassmorphism, cozy sticker energy, premium letter-style layouts
+- **Seasonal Arc**: Winter → Spring → Summer → Fall → Winter (backgrounds, transitions, and content shift by season)
 - **Atmosphere Transition**: Blue/White (Winter) → Green (Spring) → Yellow/Bright (Summer) → Orange/Gold (Fall) → Cozy Blue (End Winter)
-- **Note**: "System Syncing..." for short distance, shown subtly as a status.
+- **Note**: "System Syncing..." shown subtly as a status on all pages
 
 ---
 
-## 📖 9-Page Interactive Flow
+## 📖 The Letter Structure: 5 Seasonal Sections
 
-### 1. The Annual Login (WINTER) ✅ IMPLEMENTED
+This project follows a personal letter format, structured as a heartfelt message that unfolds through interactive seasonal pages.
+
+### 1. The Meaningful Opening (WINTER) ✅ IMPLEMENTED
+**Purpose**: Set the tone and acknowledge the milestone
+
 - **Visual**: Winter gradient background with animated sparkles and snow particles
-- **Text**:  
+- **Current Text**:  
   > Happy 21 to em Mai
-- **Interaction**: "Let's begin" button → transitions to garden
+- **Interaction**: "Let's begin" button → transitions to Spring
 - **Animation**: Spring bloom transition effect (white circle expanding)
 - **Components**: `LoginPage.jsx` with `SnowParticle` components
+- **Status**: ✅ Basic implementation complete
+- **TODO**: Add "first thought" section (e.g., "I woke up feeling so lucky that I get to spend another one of your birthdays by your side")
 
 ---
 
-### 2. Sticker Analytics (SPRING)
-- **Visual**: Sticker Frequency Analysis — floating Loopy & Pocoyo stickers w/ soft glass cards.
-- **Data Points**:
-    - `Total Chaotic Loopys Sent`
-    - `Pocoyo Hugs Recorded`
-    - `Custom Sticker Peak Hours`
-- **Effect**: Parallax sticker motion following cursor.
+### 2. The "Why" — Specific Appreciations (SPRING) ✅ IMPLEMENTED
+**Purpose**: Show why you love her through specific, personal details
 
----
-
-### 3. The Archetype Garden (SPRING) ✅ IMPLEMENTED
 - **Visual**: Interactive 3D tree garden with growing branches and blooming flowers
+- **Concept**: Each flower represents a specific reason why you love her — the small things only you notice
 - **Features**:
     - **Sequential Tree Growth**: Trunk grows first, then primary branches, then secondary branches (seamless, no brown dots)
-    - **5 Interactive Archetype Flowers**:
+    - **5 Interactive Archetype Flowers** (representing specific appreciations):
         1. "The Main Character" - Always iconic, turning every sidewalk into a runway
         2. "The Joy Generator" - Lighting up every room with that smile
         3. "Professional Overthinker" - Calculating every possibility, but we love that brain
@@ -62,90 +60,91 @@
 
 ---
 
-### 4. THE GAME: The Truth Detector (SUMMER)
-- **Concept**: Correct the classic phrase:  
-  _"Xin lỗi em chỉ là ABC"_  
-- **Characters**: Capybara as "Verifier"
-- **Logic**:
-    - Wrong slot: Angry Capybara, screen shake, red flash
-    - Right slot: Dancing Capybara, heart confetti, gold
-- **Success**:  
-  > System Correction: *You are perfect as ABC.*
+### 3. The Highlight Reel — Favorite Memories (SUMMER) ✅ IMPLEMENTED
+**Purpose**: Reflect on the time spent together since her last birthday
+
+- **Visual**: Interactive "Truth Detector" game with summer storm/happy weather effects
+- **Concept**: Correct the classic phrase through an interactive game that represents memories and moments together
+- **Gameplay**:
+    - Two scrollable slots to construct the phrase
+    - Slot 1 options: `"xin lỗi em chỉ là"` (wrong) or `"anh thích em là"` (correct)
+    - Slot 2 options: Various endearing nicknames/descriptions
+    - **Wrong Choice**: Angry/sad Pocoyo, dramatic storm effects (rain, lightning, clouds), screen shake, red flash
+    - **Right Choice**: Happy dancing Pocoyo, sunny effects, heart confetti, gold highlights
+- **Success Message**:  
+  > "Exactly! Lúc nào anh cũng yêu em"
+- **Components**: `TruthDetectorPage.jsx` with:
+    - `ScrollableSlot` component for interactive phrase building
+    - `Pocoyo` character component (happy/sad states)
+    - `RainDrop`, `Cloud`, `Lightning` weather effects
+    - `SentenceTray` for displaying the constructed phrase
+- **Technical Details**:
+    - Custom scrollable slot with drag and wheel support
+    - Framer Motion animations for all state changes
+    - Dynamic background filtering based on game state
+    - Summer background image with weather overlay effects
 
 ---
 
-### 5. Our "Heatmap" (SUMMER)
-- **Visual**: Connectivity Map (no distance, just time together)
-- **Content**:  
-    - Top 3 places together  
-    - "Total Hours spent on the same frequency"
-- **Theme**: Focused on closeness, not separation
+### 4. Hopes for Her Year Ahead (FALL) ⏳ TO BE IMPLEMENTED
+**Purpose**: Shift focus to her personal growth and shared future
+
+**Planned Content**:
+- **Her Goals**: Mention something she's working toward (a promotion, a hobby, a personal milestone) and tell her you'll be there to cheer her on
+- **Your Shared Future**: Mention one thing you're looking forward to doing with her in the coming months
+- **Visual Theme**: Fall colors (orange/gold), cozy atmosphere
+- **Interaction**: TBD (could be interactive elements, animations, or a simple scrollable letter format)
 
 ---
 
-### 6. THE LOVE SLIDER (FALL)
-- **UI**: Glassy colored slider (type=range)  
-- **Stages**:
-    1. Loopy: "Loopy loves you!"
-    2. Pocoyo: "Pocoyo loves you!"
-    3. Capybara: "Capybara loves you!"
-    4. Tom Cruise: "Tom Cruise loves you!"
-    5. **Final**: "I love you the most."
-- **Logic**: 0-100 → 5 stages
+### 5. The "Big Finish" — Final Promise (WINTER) ⏳ TO BE IMPLEMENTED
+**Purpose**: End with a strong, romantic closing that leaves her feeling secure and loved
 
----
-
-### 7. Shared System Prompts (FALL)
-- **Visual**: Code-style "Relationship Logic" snippets
-- **Examples**:
-    ```
-    if (hungry) { get_snacks("her favorites"); }
-    while (together) { happiness = infinity; }
-    ```
-- **Theme**: Cozy/cheeky "US code"
-
----
-
-### 8. The Memory Vault (WINTER)
-- **Visual**: Horizontal film strip/pixel-art gallery
-- **Content**: Montage of top moments (age 20)
-- **Vibe**: Warm lighting, soft cozy filter, snow outside
-
----
-
-### 9. Still Life with GPU & Baguette ("US" Bday Update)
-- **Visual**: High-fidelity pixel-art desk
-    - 21st cake
-    - Laptop w/ your photo
-    - Half-eaten snack
-    - Coffee
-- **Caption**:  
-  > Still Life with Us — 2025.  
-  > Version 21.0 is now live.  
-  > Prediction: *Our best year yet.*
+**Planned Content**:
+- **A Final Promise**: A simple "I'm in your corner, always."
+- **The Sign-off**: Use a closing that is unique to your relationship (an inside joke or a pet name)
+- **Visual Theme**: Cozy winter atmosphere, warm lighting, soft cozy filter
+- **Interaction**: TBD
 
 ---
 
 ## 🧩 Component/Dev Quick Reference
 
 ### Implemented Components ✅
-- **App.jsx**: Manages `currentStep` (1-9) and page transitions
-- **LoginPage.jsx**: Winter-themed login with animated particles
-- **ArchetypePage.jsx**: Interactive garden with:
-    - Sequential branch growth system
-    - 5 interactive archetype flowers with zoom/modal
-    - 9 decorative flowers
-    - 8 animated birds
-    - Conditional continue button (requires all flowers clicked)
+- **App.jsx**: Manages `currentStep` (1-4) and page transitions
+  - Step 1: LoginPage (Winter Opening)
+  - Step 2: ArchetypePage (Spring - The "Why")
+  - Step 3: TruthDetectorPage (Summer - Highlight Reel)
+  - Step 4: TBD (Fall - Wishes)
+  - Step 5: TBD (Winter - Big Finish)
+- **LoginPage.jsx**: Winter-themed opening with animated particles
+- **ArchetypePage.jsx**: Interactive garden representing specific appreciations
+- **TruthDetectorPage.jsx**: Interactive memory/highlight game with weather effects
 - **Bottom Status**: `"System Syncing..."` (shown on all pages)
 
 ### To Be Implemented
-- **Capybara Verifier**: takes `status` (`neutral`, `error`, `success`), swaps images and Framer Motion animates
-- **LoveSlider**: input range (0-100), mapped to 5 stages
-- **Sticker Parallax**: Loopy/Pocoyo images float slightly w/ mouse
+- **FallPage.jsx**: Wishes for her year ahead
+- **FinalWinterPage.jsx**: The big finish with final promise and sign-off
+- **First Thought Section**: To be added to LoginPage (winter opening)
 
 ---
 
-> _No matter the season or background, it’s always us, always connected. Happy Birthday, Version 21.0!_
+## 📝 Development Notes
 
+### Current Flow
+1. User lands on Winter opening → clicks "Let's begin"
+2. Transitions to Spring garden → user clicks all 5 archetype flowers → continue button appears
+3. Transitions to Summer Truth Detector → user plays game to correct phrase → next button appears
+4. (Next: Fall wishes page)
+5. (Next: Final winter closing)
 
+### Design Philosophy
+- Each page represents a section of a personal letter
+- Interactive elements make the letter engaging and memorable
+- Seasonal transitions create a journey through time
+- Focus on specific, personal details rather than generic compliments
+- Celebrate both individual growth and shared moments
+
+---
+
+> _A letter written through seasons, memories, and love. Happy Birthday, Version 21.0!_
