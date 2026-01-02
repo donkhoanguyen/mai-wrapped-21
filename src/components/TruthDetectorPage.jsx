@@ -462,14 +462,14 @@ const TruthDetectorPage = ({ onNext }) => {
           </div>
 
           {/* Verification Status & Navigation */}
-          <div className="h-16 flex items-center justify-center">
+          <div className="min-h-[120px] md:min-h-16 flex items-center justify-center py-4 md:py-0">
             {isComplete && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col items-center gap-6"
+                className="flex flex-col items-center gap-4 md:gap-6 px-4"
               >
-                <p className={`text-xl md:text-2xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] italic ${isPocoyoHappy ? 'text-blue-200' : 'text-red-400'}`}>
+                <p className={`text-lg md:text-xl lg:text-2xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] italic text-center ${isPocoyoHappy ? 'text-blue-200' : 'text-red-400'}`}>
                   {isPocoyoHappy 
                     ? "Exactly! Lúc nào anh cũng yêu em" 
                     : "Error detected: Đâu lúc nào anh không yêu em ????"}
@@ -487,7 +487,7 @@ const TruthDetectorPage = ({ onNext }) => {
                       boxShadow: "0 0 30px rgba(255,255,255,0.6)"
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-12 py-4 bg-white/90 text-blue-900 rounded-full font-black text-lg shadow-2xl transition-all uppercase tracking-widest"
+                    className="px-8 md:px-12 py-3 md:py-4 bg-white/90 text-blue-900 rounded-full font-black text-base md:text-lg shadow-2xl transition-all uppercase tracking-widest"
                   >
                     Next Season
                   </motion.button>
