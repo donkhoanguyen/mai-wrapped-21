@@ -56,12 +56,11 @@ const AllMyWishesPage = ({ onNext }) => {
     "yêu anh"
   ];
 
-  const handleContainerClick = (e) => {
+  const handleWishPlacement = (clientX, clientY) => {
     if (wishIndex >= wishesPool.length) return;
-    if (e.target.tagName === 'BUTTON') return;
 
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
+    const x = (clientX / window.innerWidth) * 100;
+    const y = (clientY / window.innerHeight) * 100;
     
     const newWish = {
       id: Date.now(),
@@ -74,6 +73,20 @@ const AllMyWishesPage = ({ onNext }) => {
     setWishIndex(prev => prev + 1);
   };
 
+  const handleContainerClick = (e) => {
+    if (wishIndex >= wishesPool.length) return;
+    if (e.target.tagName === 'BUTTON') return;
+    handleWishPlacement(e.clientX, e.clientY);
+  };
+
+  const handleTouchStart = (e) => {
+    if (wishIndex >= wishesPool.length) return;
+    if (e.target.tagName === 'BUTTON') return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    handleWishPlacement(touch.clientX, touch.clientY);
+  };
+
   const isComplete = wishIndex >= wishesPool.length;
 
   return (
@@ -84,6 +97,7 @@ const AllMyWishesPage = ({ onNext }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
       onClick={handleContainerClick}
+      onTouchStart={handleTouchStart}
     >
       {/* Background */}
       <div 
@@ -131,9 +145,10 @@ const AllMyWishesPage = ({ onNext }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute top-10 left-1/2 -translate-x-1/2 text-white/70 font-serif italic text-sm pointer-events-none"
+          className="absolute top-10 left-1/2 -translate-x-1/2 text-white/70 font-serif italic text-sm md:text-base pointer-events-none px-4 text-center"
         >
-          Click anywhere to reveal my wishes for you...
+          <span className="hidden md:inline">Click anywhere to reveal my wishes for you...</span>
+          <span className="md:hidden">Tap anywhere to reveal my wishes for you...</span>
         </motion.div>
       )}
 
@@ -143,7 +158,7 @@ const AllMyWishesPage = ({ onNext }) => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute bottom-8 right-8 z-50"
+            className="absolute bottom-4 md:bottom-8 right-4 md:right-8 z-50"
           >
             <motion.button
               onClick={() => {
@@ -152,7 +167,7 @@ const AllMyWishesPage = ({ onNext }) => {
               }}
               whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,1)", color: "#c2410c" }}
               whileTap={{ scale: 0.9 }}
-              className="bg-white/10 hover:bg-white backdrop-blur-md text-white px-8 py-3 rounded-full border border-white/40 transition-all text-sm font-black uppercase tracking-[0.2em] shadow-2xl"
+              className="bg-white/10 hover:bg-white backdrop-blur-md text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full border border-white/40 transition-all text-xs md:text-sm font-black uppercase tracking-[0.2em] shadow-2xl"
             >
               Final Chapter
             </motion.button>

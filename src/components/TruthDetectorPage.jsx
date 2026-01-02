@@ -154,26 +154,52 @@ const ScrollableSlot = ({ options, value, onChange, isError }) => {
     setYOffset(snappedY);
   };
 
-  const handleMouseDown = (e) => {
+  const handleStart = (clientY) => {
     setIsDragging(true);
-    setStartY(e.clientY);
+    setStartY(clientY);
     setStartOffset(yOffset);
+  };
+
+  const handleMouseDown = (e) => {
+    handleStart(e.clientY);
     e.preventDefault();
   };
 
-  const handleMouseMove = (e) => {
+  const handleTouchStart = (e) => {
+    handleStart(e.touches[0].clientY);
+    e.preventDefault();
+  };
+
+  const handleMove = (clientY) => {
     if (!isDragging) return;
-    const deltaY = e.clientY - startY;
+    const deltaY = clientY - startY;
     let newOffset = startOffset + deltaY;
     newOffset = Math.max(minOffset, Math.min(maxOffset, newOffset));
     setYOffset(newOffset);
   };
 
-  const handleMouseUp = () => {
+  const handleMouseMove = (e) => {
+    handleMove(e.clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    handleMove(e.touches[0].clientY);
+    e.preventDefault();
+  };
+
+  const handleEnd = () => {
     if (isDragging) {
       snapToNearest(yOffset);
       setIsDragging(false);
     }
+  };
+
+  const handleMouseUp = () => {
+    handleEnd();
+  };
+
+  const handleTouchEnd = () => {
+    handleEnd();
   };
 
   const handleWheel = (e) => {
@@ -189,9 +215,13 @@ const ScrollableSlot = ({ options, value, onChange, isError }) => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd);
       return () => {
         window.removeEventListener('mousemove', handleMouseMove);
         window.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
       };
     }
   }, [isDragging, startY, startOffset, yOffset]);
@@ -207,12 +237,13 @@ const ScrollableSlot = ({ options, value, onChange, isError }) => {
   return (
     <div
       ref={containerRef}
-      className={`relative h-[210px] w-full overflow-hidden cursor-grab active:cursor-grabbing select-none rounded-[2.5rem] border-2 transition-all duration-700 backdrop-blur-md ${
+      className={`relative h-[210px] w-full overflow-hidden cursor-grab active:cursor-grabbing select-none rounded-[2.5rem] border-2 transition-all duration-700 backdrop-blur-md touch-none ${
         isError
           ? 'border-red-500/50 bg-red-900/20 shadow-[0_0_30px_rgba(239,68,68,0.3)]'
           : 'border-white/40 bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.2)]'
       }`}
       onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
       onWheel={handleWheel}
     >
       <div className={`absolute top-1/2 left-0 right-0 h-[70px] -translate-y-1/2 border-y z-10 pointer-events-none transition-colors duration-700 ${
